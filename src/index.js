@@ -1,5 +1,8 @@
-// src/index.js
+require('dotenv').config();
+
 const fastify = require('fastify')({ logger: true });
+
+const accessControl = require('./middlewares/access_control');
 const apiTokenRoutes = require('./routes/api_token_routes'); // a
 const bookRoutes = require('./routes/book_routes'); // b
 const commentRoutes = require('./routes/comment_routes'); // c
@@ -32,6 +35,8 @@ fastify.register(require('@fastify/swagger-ui'), {
   },
   staticCSP: true, // Optional: Enforce a strict Content-Security-Policy
 });
+
+fastify.addHook('preHandler', accessControl);
 
 // A simple root route for testing
 fastify.get('/', async (request, reply) => {

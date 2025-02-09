@@ -10,7 +10,7 @@ exports.up = function (knex) {
       .integer('api_token_id')
       .unsigned()
       .notNullable()
-      .references('token_id')
+      .references('api_token_id')
       .inTable('api_token');
     table
       .integer('book_id')

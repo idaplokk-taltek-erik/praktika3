@@ -25,7 +25,8 @@ exports.getCommentById = async (request, reply) => {
 
 exports.createComment = async (request, reply) => {
   try {
-    const { text, api_token_id, book_id } = request.body;
+    const { text, book_id } = request.body;
+    const api_token_id = request.user.api_token_id;
     const newComment = await Comment.create({ text, api_token_id, book_id });
     reply.code(201).send(newComment);
   } catch (error) {

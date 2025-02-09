@@ -14,18 +14,29 @@ class ApiToken {
   static create({ group_id, jwt_token, issued_at, expired_at }) {
     return knex('api_token')
       .insert({ group_id, jwt_token, issued_at, expired_at })
-      .returning(['token_id', 'group_id', 'jwt_token', 'issued_at', 'expired_at'])
+      .returning(['api_token_id', 'group_id', 'jwt_token', 'issued_at', 'expired_at'])
       .then(([token]) => token);
   }
 
   /**
-   * Find an API token record by token_id.
-   * @param {number} token_id
+   * Find an API token record by api_token_id.
+   * @param {number} api_token_id
    * @returns {Promise<Object|null>}
    */
-  static findById(token_id) {
+  static findById(api_token_id) {
     return knex('api_token')
-      .where({ token_id })
+      .where({ api_token_id })
+      .first();
+  }
+
+  /**
+   * Find an API token record by api_token_id.
+   * @param {string} jwt_token
+   * @returns {Promise<Object|null>}
+   */
+  static findByToken(jwt_token) {
+    return knex('api_token')
+      .where({ jwt_token })
       .first();
   }
 

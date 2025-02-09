@@ -42,6 +42,17 @@ class Comment {
   static findAll() {
     return knex('comment').select('*');
   }
+
+  /**
+   * Retrieve all comments for a specific book.
+   * @param {number|string} book_id
+   * @returns {Promise<Array<Object>>}
+   */
+  static findByBookId(book_id) {
+    return knex('comment')
+      .where({ book_id })
+      .select('*');
+  }  
 }
 
 module.exports = Comment;

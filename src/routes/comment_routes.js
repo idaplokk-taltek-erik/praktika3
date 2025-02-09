@@ -4,10 +4,9 @@ const commentController = require('../controllers/comment_controller');
 const createCommentSchema = {
   body: {
     type: 'object',
-    required: ['text', 'api_token_id', 'book_id'],
+    required: ['text', 'book_id'],
     properties: {
       text: { type: 'string' },
-      api_token_id: { type: 'number' },
       book_id: { type: 'number' },
     },
   },

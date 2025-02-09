@@ -44,6 +44,21 @@ class Book {
   static findAll() {
     return knex('book').select('*');
   }
+
+  /**
+   * Update a book record.
+   * @param {number} bookId - The ID of the book to update.
+   * @param {Object} updatedData - The fields to update.
+   * @returns {Promise<Object>} The updated book record.
+   */
+  static update(bookId, updatedData) {
+    // Update the updated_at field to current time
+    updatedData.updated_at = new Date().toISOString();
+    return knex('book')
+      .where({ book_id: bookId })
+      .update(updatedData)
+      .then(() => this.findById(bookId));
+  }
 }
 
 module.exports = Book;

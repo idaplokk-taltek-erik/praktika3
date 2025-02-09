@@ -17,7 +17,7 @@ const createTokenSchema = {
     201: {
       type: 'object',
       properties: {
-        token_id: { type: 'number' },
+        api_token_id: { type: 'number' },
         group_id: { type: 'number' },
         jwt_token: { type: 'string' },
         issued_at: { type: 'string', format: 'date-time' },
@@ -40,7 +40,7 @@ const getTokenByIdSchema = {
     200: {
       type: 'object',
       properties: {
-        token_id: { type: 'number' },
+        api_token_id: { type: 'number' },
         group_id: { type: 'number' },
         jwt_token: { type: 'string' },
         issued_at: { type: 'string', format: 'date-time' },
@@ -59,12 +59,12 @@ const getTokenByIdSchema = {
 async function apiTokenRoutes(fastify, options) {
   fastify.get('/api_tokens', apiTokenController.getAllTokens);
   fastify.get(
-    '/api_token/:id',
+    '/api_tokens/:id',
     { schema: getTokenByIdSchema },
     apiTokenController.getTokenById,
   );
   fastify.post(
-    '/api_token',
+    '/api_tokens',
     { schema: createTokenSchema },
     apiTokenController.createToken,
   );
