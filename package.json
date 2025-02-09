@@ -1,0 +1,28 @@
+{
+  "name": "fastify-sqlite-praktika2",
+  "version": "1.0.0",
+  "description": "Fastify server using SQLite and MVC architecture",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "migration:create": "knex migrate:make --knexfile knexfile.js ",
+    "migration:run": "npx knex migrate:latest --knexfile knexfile.js",
+    "migration:rollback": "npx knex migrate:rollback --knexfile knexfile.js",
+    "jwt:generate": "node scripts/jwt-generate.js"
+  },
+  "dependencies": {
+    "@fastify/swagger": "^9.4.2",
+    "@fastify/swagger-ui": "^5.2.1",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "inquirer": "^12.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  }
+}
