@@ -5,7 +5,7 @@ const ApiToken = require('../models/api_token');
 module.exports = async function accessControl(request, reply) {
   // Exempt Swagger documentation endpoints from access control.
   const reqPath = request.routerPath || request.raw.url;
-  if (reqPath && reqPath.startsWith('/documentation')) {
+  if (reqPath && (reqPath.startsWith('/documentation') || reqPath === '/')) {
     return;
   }
 

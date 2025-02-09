@@ -3,6 +3,7 @@ require('dotenv').config();
 const fastify = require('fastify')({ logger: true });
 
 const accessControl = require('./middlewares/access_control');
+const activityLogRoutes = require('./routes/activity_log_routes');
 const apiTokenRoutes = require('./routes/api_token_routes'); // a
 const bookRoutes = require('./routes/book_routes'); // b
 const commentRoutes = require('./routes/comment_routes'); // c
@@ -44,6 +45,7 @@ fastify.get('/', async (request, reply) => {
 });
 
 // Register user routes
+fastify.register(activityLogRoutes);
 fastify.register(apiTokenRoutes);
 fastify.register(bookRoutes);
 fastify.register(commentRoutes);

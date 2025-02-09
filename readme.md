@@ -63,7 +63,7 @@ Generate jwt-token for your purpose.
 
 ```sh
 curl -X GET "http://localhost:3000/books/3" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MSwiaWF0IjoxNzM5MDk1Njg0LCJleHAiOjE3NzA2NTMyODR9.zgtyQbIGEm6Q1Fsg3qN2DyDBFO1PNfqBiQKw5wW-Tu8"
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MSwiaWF0IjoxNzM5MDk2NzYyLCJleHAiOjE3NzA2NTQzNjJ9.-4xbAERgRravSNKORHwp2bsdwe69k0mJbQPdsTPm_Bs"
 ```
 
 #### Update book
@@ -73,7 +73,7 @@ With admin token
 ```sh
 curl -X PUT "http://localhost:3000/books/3" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MSwiaWF0IjoxNzM5MDk1Njg0LCJleHAiOjE3NzA2NTMyODR9.zgtyQbIGEm6Q1Fsg3qN2DyDBFO1PNfqBiQKw5wW-Tu8" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MSwiaWF0IjoxNzM5MDk2NzYyLCJleHAiOjE3NzA2NTQzNjJ9.-4xbAERgRravSNKORHwp2bsdwe69k0mJbQPdsTPm_Bs" \
   -d '{"name": "Updated Book Name"}'
 ```
 
@@ -82,7 +82,7 @@ With user token it fails
 ```sh
 curl -X PUT "http://localhost:3000/books/3" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MywiaWF0IjoxNzM5MDk1NzA0LCJleHAiOjE3NzA2NTMzMDR9.DlD6KHttjegg9VO4Q-Du_6xvlf_0GfvSln2F4dq0Ke4" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MywiaWF0IjoxNzM5MDk2NzcyLCJleHAiOjE3NzA2NTQzNzJ9.EVnUYf-S25WPxu2MatKeRyLwmqoqnmh068btd0pCcEA" \
   -d '{"name": "Updated Book Name AS User"}'
 ```
 
@@ -92,7 +92,7 @@ As admin
 
 ```sh
 curl -X POST "http://localhost:3000/comments" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MSwiaWF0IjoxNzM5MDk1Njg0LCJleHAiOjE3NzA2NTMyODR9.zgtyQbIGEm6Q1Fsg3qN2DyDBFO1PNfqBiQKw5wW-Tu8" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MSwiaWF0IjoxNzM5MDk2NzYyLCJleHAiOjE3NzA2NTQzNjJ9.-4xbAERgRravSNKORHwp2bsdwe69k0mJbQPdsTPm_Bs" \
   -H "Content-Type: application/json" \
   -d '{
         "text": "This is a comment on book 4 by ADMIN.",
@@ -104,7 +104,7 @@ As user
 
 ```sh
 curl -X POST "http://localhost:3000/comments" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MywiaWF0IjoxNzM5MDk1NzA0LCJleHAiOjE3NzA2NTMzMDR9.DlD6KHttjegg9VO4Q-Du_6xvlf_0GfvSln2F4dq0Ke4" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MywiaWF0IjoxNzM5MDk2NzcyLCJleHAiOjE3NzA2NTQzNzJ9.EVnUYf-S25WPxu2MatKeRyLwmqoqnmh068btd0pCcEA" \
   -H "Content-Type: application/json" \
   -d '{
         "text": "This is a comment on book 4.",
@@ -117,5 +117,14 @@ curl -X POST "http://localhost:3000/comments" \
 
 ```sh
 curl -X GET "http://localhost:3000/books/4/comments" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MywiaWF0IjoxNzM5MDk1NzA0LCJleHAiOjE3NzA2NTMzMDR9.DlD6KHttjegg9VO4Q-Du_6xvlf_0GfvSln2F4dq0Ke4"
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MywiaWF0IjoxNzM5MDk2NzcyLCJleHAiOjE3NzA2NTQzNzJ9.EVnUYf-S25WPxu2MatKeRyLwmqoqnmh068btd0pCcEA"
+```
+
+#### Read activity log
+
+As admin
+
+```sh
+curl -X GET "http://localhost:3000/activity_log" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cF9pZCI6MSwiaWF0IjoxNzM5MDk2NzYyLCJleHAiOjE3NzA2NTQzNjJ9.-4xbAERgRravSNKORHwp2bsdwe69k0mJbQPdsTPm_Bs"
 ```
