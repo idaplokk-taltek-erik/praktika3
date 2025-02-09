@@ -1,12 +1,14 @@
--- Insert roles: manager and reader
+-- .sql/group_role_data.sql
+
 INSERT INTO role (role_name, role_access) VALUES 
-  ('manager', '[{"endpoint":"/users","method":"GET"}, {"endpoint":"/users","method":"POST"}]'),
-  ('reader',  '[{"endpoint":"/users","method":"GET"}]');
+  ('api_token_read',  '[{"endpoint": "/api_tokens", "method": "GET"}]'),
+  ('api_token_write', '[{"endpoint": "/api_tokens", "method": "POST"}, {"endpoint": "/api_tokens", "method": "PUT"}, {"endpoint": "/api_tokens", "method": "DELETE"}]'),
+  ('comment_read',    '[{"endpoint": "/comments", "method": "GET"}]'),
+  ('comment_write',   '[{"endpoint": "/comments", "method": "POST"}]'),
+  ('book_read',       '[{"endpoint": "/books", "method": "GET"}]'),
+  ('book_write',      '[{"endpoint": "/books", "method": "POST"}, {"endpoint": "/books", "method": "PUT"}, {"endpoint": "/books", "method": "DELETE"}]');
 
--- Insert groups: admin and user
--- For this example, assume that the admin group is assigned the manager role (role_id = 1)
--- and the user group is assigned the reader role (role_id = 2).
 INSERT INTO "group" (name, role_ids) VALUES 
-  ('admin', '[1]'),
-  ('user',  '[2]');
-
+  ('admin',   '[1,2,3,4,5,6]'),
+  ('manager', '[1,3,4,5,6]'),
+  ('user',    '[5,4]');

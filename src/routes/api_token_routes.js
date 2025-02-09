@@ -61,12 +61,12 @@ async function apiTokenRoutes(fastify, options) {
   fastify.get(
     '/api_token/:id',
     { schema: getTokenByIdSchema },
-    apiTokenController.getTokenById
+    apiTokenController.getTokenById,
   );
   fastify.post(
     '/api_token',
     { schema: createTokenSchema },
-    apiTokenController.createToken
+    apiTokenController.createToken,
   );
 }
 

@@ -1,6 +1,8 @@
 // src/index.js
 const fastify = require('fastify')({ logger: true });
-const apiTokenRoutes = require('./routes/api_token_routes');
+const apiTokenRoutes = require('./routes/api_token_routes'); // a
+const bookRoutes = require('./routes/book_routes'); // b
+const commentRoutes = require('./routes/comment_routes'); // c
 
 // Register @fastify/swagger to generate the OpenAPI spec.
 fastify.register(require('@fastify/swagger'), {
@@ -38,13 +40,15 @@ fastify.get('/', async (request, reply) => {
 
 // Register user routes
 fastify.register(apiTokenRoutes);
+fastify.register(bookRoutes);
+fastify.register(commentRoutes);
 
 // Updated listen call for Fastify v5 (options object required)
 const start = async () => {
   try {
     await fastify.listen({ port: 3000, host: '0.0.0.0' });
     fastify.log.info(
-      `Server is running on port ${fastify.server.address().port}`
+      `Server is running on port ${fastify.server.address().port}`,
     );
 
     fastify.ready((err) => {
