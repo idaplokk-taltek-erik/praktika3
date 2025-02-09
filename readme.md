@@ -28,6 +28,8 @@ npm run jwt:generate
 
 ## Database
 
+The database in the repo is already set-up and the created JWT tokens are listed in the cURL commands below.
+
 ### Code-first database
 
 The benefit is that the code can be started up in an any new environment and the database schema evolves as a brother to the code.
