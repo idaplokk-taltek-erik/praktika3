@@ -13,14 +13,30 @@ fastify.register(require('@fastify/swagger'), {
   routePrefix: '/documentation', // This is where the generated spec is available
   openapi: {
     info: {
-      title: 'User API',
-      description: 'API documentation for the User endpoints',
+      title: 'Books API',
+      description: 'API documentation for the Books endpoints',
       version: '1.0.0',
     },
     servers: [
       {
         url: 'http://localhost:3000',
         description: 'Local server',
+      },
+    ],
+    // Define the security scheme for bearer auth.
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    // Apply the security scheme globally (or you can apply it per route)
+    security: [
+      {
+        bearerAuth: [],
       },
     ],
   },
@@ -31,7 +47,7 @@ fastify.register(require('@fastify/swagger'), {
 fastify.register(require('@fastify/swagger-ui'), {
   routePrefix: '/documentation', // Serves the Swagger UI at /documentation
   uiConfig: {
-    docExpansion: 'full',
+    docExpansion: 'list',
     deepLinking: false,
   },
   staticCSP: true, // Optional: Enforce a strict Content-Security-Policy

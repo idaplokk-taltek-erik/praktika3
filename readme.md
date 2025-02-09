@@ -4,6 +4,8 @@ OpenAPI documentation available at
 
 > http://localhost:3000/documentation
 
+It is possible to set the bearer token via `Authorize` button and use the UI to make requests.
+
 ## Install dependencies
 
 ```sh
@@ -111,7 +113,6 @@ curl -X POST "http://localhost:3000/comments" \
         "book_id": 4
       }'
 ```
-
 
 #### Read comments, should have corresponding api_token_id set via JWT token
 

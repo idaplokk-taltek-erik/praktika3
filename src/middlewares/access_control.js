@@ -43,7 +43,12 @@ module.exports = async function accessControl(request, reply) {
       return;
     }
 
-    request.user = { group_id: payload.group_id, group, roles, api_token_id: apiToken.api_token_id };
+    request.user = {
+      group_id: payload.group_id,
+      group,
+      roles,
+      api_token_id: apiToken.api_token_id,
+    };
 
     const reqPath = request.routerPath || request.raw.url;
     const reqMethod = request.method.toUpperCase();
